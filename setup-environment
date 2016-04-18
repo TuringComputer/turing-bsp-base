@@ -161,6 +161,11 @@ DL_DIR ?= '\${BSPDIR}/downloads/'
 
 BB_NUMBER_THREADS = '4'
 PARALLEL_MAKE = '-j 4'
+
+# This is necessary to build images with support for QT5
+# which are our default images
+DISTRO_FEATURES_append = "opengl"
+DISTRO_FEATURES_remove = "x11 wayland"
 EOF
     # Change settings according environment
     sed -e "s,MACHINE ??=.*,MACHINE ??= '$MACHINE',g" \
